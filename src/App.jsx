@@ -1,6 +1,7 @@
 import './App.css'
 import { useState } from 'react';
 import { useEffect } from 'react';
+const baseUrl = import.meta.env.VITE_BACKEND_URL;
 
 const defects=[
 "casting","machining"
@@ -54,7 +55,7 @@ setFormData(
 const handleSubmit=async (e)=>{
   e.preventDefault();
   console.log(formData)
-  await fetch('/api/addPartsData', {
+  await fetch(`${baseUrl}/api/addPartsData`, {
       method: 'POST',
       body: JSON.stringify({
         ...formData
@@ -67,20 +68,20 @@ const handleSubmit=async (e)=>{
 
 const handleReport = async (type,model) => {
     if(type==="inspection"){
-    await fetch("/api/generate-inspection-report")
+    await fetch(`${baseUrl}/api/generate-inspection-report`)
     }else
       if(type==="pareto"){
-         await fetch("/api//generate-pareto-report")
+         await fetch(`${baseUrl}/api//generate-pareto-report`)
       }
     else if (type==="trend"){
-       await fetch("/api/send-model-trend")
+       await fetch(`${baseUrl}/api/send-model-trend`)
     }
     else if (type==="hourly"){
       if(!model){
          return alert("Please select a model first.");
       }
       else{
-        await fetch("/api/hourly-report", {
+        await fetch(`${baseUrl}/api/hourly-report`, {
       method: 'POST',
       body: JSON.stringify({
         model:hourlyReportModel
