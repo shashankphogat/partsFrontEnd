@@ -1,0 +1,31 @@
+# React / general Node
+node_modules/
+
+# Build output
+build/
+dist/
+
+# Environment variables
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Log files
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Mac filesystem
+.DS_Store
+
+# VSCode
+.vscode/
+
+# IDE or OS temp files
+*.swp
+*~
+
+# Optional TypeScript cache
+*.tsbuildinfo
